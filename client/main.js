@@ -1,8 +1,9 @@
 
-var web3 = new Web3(Web3.givenProvider || "HTTP://127.0.0.1:7545");
+var web3 = new Web3(Web3.givenProvider);
 var instance;
 var admin; 
-var smartContract = "0x95C7d76285a8DC24354149Dd59D68fd42e07ffd3";
+var smartContract = "0xdEaA6F35065B712a86E89ED4B026771eb35ecf72";
+console.log(`this is web3: ${web3}`);
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts) {
