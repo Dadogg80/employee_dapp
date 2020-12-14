@@ -1,24 +1,22 @@
 
 var web3 = new Web3(Web3.givenProvider || "HTTP://127.0.0.1:7545");
 var instance;
-
-/*const givenProvider = 'wss://eth-kovan.ws.alchemyapi.io/v2/ClLuoVQfud0kjTEcmSREUloGeHxmVRx2'; 
-
-const ganache = "HTTP://127.0.0.1:7545";
-*/
-
-const smartContract = "0x95C7d76285a8DC24354149Dd59D68fd42e07ffd3";
+var admin; 
+var smartContract = "0x95C7d76285a8DC24354149Dd59D68fd42e07ffd3";
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts) {
-      let instance = new web3.eth.Contract( abi, smartContract, {
+        console.log('Inside window.ethereum');
+        //web3.eth.getAccounts(console.log);
+        
+      
+        instance = new web3.eth.Contract( abi, smartContract, {
           from: accounts[0], 
           gasPrice: '20000000000'
         });
-      
-        console.log('This is the instance :', instance);
-        web3.eth.getAccounts(console.log);
-        myContract.events.allEvents();
+        admin = accounts[0];
+        console.log(`My contract: ${instance}`);
+        console.log(`Owner account is ${admin}`)
         
         instance.events.employeeCreated().on('data', function(event){
             console.log(`this is ${events}`);
@@ -44,7 +42,6 @@ $(document).ready(function() {
     $("#get_data_button").click(fetchAndDisplay);
 
     console.log('Application is ready for testing!');
-    console.log(`My contract: ${instance}`);
     alert('Stage 1 is ready.');
 });
 
@@ -63,7 +60,7 @@ function inputData() {
         value: web3.utils.toWei("1", "ether")
     }
     */
-    console.log(_name, _gender, _dateOfBirth, _salary)
+    console.log(_name, _gender, _dateOfBirth, _email, _salary, _workerAddress, _departmentAddress)
 
     instance.methods.createWorker(_name, _gender, _dateOfBirth, _email, _workerAddress, _departmentAddress, _salary).send({}, function(error, txHash){
         if(error){
