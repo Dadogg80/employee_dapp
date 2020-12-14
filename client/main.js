@@ -93,11 +93,11 @@ function fetchAndDisplay(){
     var _workerAddress = $("#getWorkerAddress_input").val();
     console.log(_workerAddress);
 
-    instance.methods.getEmployee(_workerAddress).call().then( function(res, data) {
+    instance.methods.getEmployee(_workerAddress).call().then( function(res) {
         console.log('Button Pushed!');
         console.log(res);    
-        console.log(res[1]);
-        $("#name_output").text(res[0]);
+        
+        $("#employeeId_output").text(res[0]);
         $("#name_output").text(res[1]);
        //$("#gender_output").text(res[]);
         $("#dateOfBirth_output").text(res[2]);
