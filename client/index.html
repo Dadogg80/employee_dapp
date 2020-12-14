@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>People</title>
+    <title>Register Employee</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
@@ -16,28 +16,44 @@
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h2 class="display-5">Employee Dapp</h2>
-        <h4 class="lead">Register your employees on the blockchain!</h4>
+
+    <!-- Navbar   -->
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+        </div>
+      </nav>
+    </div>
+    
+    <div class="row">
+      <div class="col-md">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h2 class="display-5">Employee Dapp</h2>
+            <h4 class="lead">Register your employees on the blockchain!</h4>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="container">
-      <div id="workerCreation"></div>
-      <div class="row justify-content-md-center">
-        <div class="col-md-auto">
-          <p>
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="#registerEmployee" role="button" aria-expanded="false" aria-controls="registerEmployee">Register Employee</a>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#showEmployeeData" aria-expanded="false" aria-controls="showEmployeeData">Show employee data</button>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="registerEmployee showEmployeeData">Show All</button>
-          </p>
-          <div class="row">
-            <div class="col">
+    <div id="workerCreation"></div>
 
-              <div class="collapse multi-collapse" id="registerEmployee">
-                <div class="card card-body">
-                  <div>
-                    <h5 class='card card-header-title'>Add employee information</h5>
+      <div class="container mt-3">  
+        <div class="row justify-content-center">
+          <div class="col">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="static">Register new employee</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" data-backdrop="false">Modal without Overlay (false)</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3" data-backdrop="static">Modal with static backdrop</button>
+
+                      <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Register New Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" id="name_input" placeholder="Name" >
                     </div>
@@ -62,56 +78,62 @@
                       <input type="text" class="form-control" id="departmentAddress_input" placeholder="Department Address">
                     </div>
                     <button type="button" id="add_data_button" class="btn btn-secondary btn-sm">Add Data</button>
+                  </div>  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                   </div>
-                </div>          
+                </div>   
               </div>
-
             </div>
-          
-            <div class="col">
-              <div class="collapse multi-collapse" id="showEmployeeData">
-                <div class="card card-body">
-
-                  <div class="col-md-auto" id='getData-output'>
-                    <div>
-                      <h5 class='card card-header-title'>Get Employee Data</h5>
-                      <div class="input mb-6">
-                        <input type="text" class="form-control" id="getWorkerAddress_input" placeholder="Input Worker Address">
-                      </div>
-                      <div>
-                        Id: <span id="employeeId_output"></span>
-                      </div>
-                      <div>
-                        Name: <span id="name_output"></span>
-                      </div>
-                      <div>
-                        Gender: <span id="gender_output"></span>
-                      </div>
-                      <div>
-                        Date of Birth: <span id="dateOfBirth_output"></span>
-                      </div>
-                      <div>
-                        Email: <span id="email_output"></span>
-                      </div>
-                      <div>
-                        Worker Address: <span id="workerAddress_output"></span>
-                      </div>
-                      <div>
-                        Salary: <span id="salary_output"></span>
-                      </div>
-                      <div>
-                        Department Address: <span id="departmentAddress_output"></span>
-                      </div>
-                      <br>
-                      <button type="button" id="get_data_button" class="btn btn-secondary btn-sm">Get Employee Information</button>
+          </div>
+          <div class="col">  
+            <div class="modal fade" id="myModal2" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Retrieve employee information</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="input mb-6">
+                      <input type="text" class="form-control" id="getWorkerAddress_input" placeholder="Input Worker Address">
                     </div>
+                    <div>
+                      Id: <span id="employeeId_output"></span>
+                    </div>
+                    <div>
+                      Name: <span id="name_output"></span>
+                    </div>
+                    <div>
+                      Gender: <span id="gender_output"></span>
+                    </div>
+                    <div>
+                      Date of Birth: <span id="dateOfBirth_output"></span>
+                    </div>
+                    <div>
+                      Email: <span id="email_output"></span>
+                    </div>
+                    <div>
+                      Worker Address: <span id="workerAddress_output"></span>
+                    </div>
+                    <div>
+                      Salary: <span id="salary_output"></span>
+                    </div>
+                    <div>
+                      Department Address: <span id="departmentAddress_output"></span>
+                    </div>
+                    <br>
+                    <button type="button" id="get_data_button" class="btn btn-secondary btn-sm">Get Employee Information</button>
                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                   </div>
-               </div>
+                </div>        
+              </div>
             </div>
-          </div> 
-       </div>
-     </div>
+          </div>  
+        </div>
+      </div>
 
 
 
