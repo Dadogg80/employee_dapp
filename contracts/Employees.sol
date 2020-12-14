@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.4.16 <0.8.0;
+pragma solidity ^0.7.0;
 
 contract Employees {
 
@@ -22,8 +22,10 @@ contract Employees {
         string email;
         address account;
     }
-
+    mapping (address => uint) public salary;
+    mapping(address => address) public department;
     mapping (address => Employee) public employees;
+ 
     uint[] id;
 
     event employeeCreated (uint employeeId, string name, address account);
@@ -76,4 +78,22 @@ contract Employees {
 
         emit employeeDeleted(employeeId, name, _account);
     }
+
+    
+ function createWorker (string memory _name, string memory _gender, uint _dateOfBirth,string memory _email, address _workerAddress, uint _salary, address _department)
+    public
+    {
+        require (_department != _workerAddress);
+        createEmployee(_name, _gender, _dateOfBirth, _email, _workerAddress);
+        salary[_workerAddress] = _salary;
+        department[_workerAddress] = _department;
+    }
+
+    function fireWorker (address _workerAddress) public {
+        require (msg.sender != _workerAddress);
+        deleteEmployee(_workerAddress);
+        delete(salary[_workerAddress]);
+        delete(department[_workerAddress]);
+    }
+
 }
