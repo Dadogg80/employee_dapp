@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.7.0;
 
-contract Employees {
+abstract contract Employees {
 
     address public owner;
 
-    constructor () public {
+    constructor () {
         owner = msg.sender;
     }
 
@@ -22,11 +22,11 @@ contract Employees {
         string email;
         address account;
     }
-    mapping (address => uint) public salary;
-    mapping(address => address) public department;
+    mapping (address => uint) private salary;
+    mapping(address => address) private department;
     mapping (address => Employee) public employees;
  
-    uint[] id;
+    uint[] public id;
 
     event employeeCreated (uint employeeId, string name, address account);
     event employeeDeleted (uint employeeId, string name, address account);
@@ -35,7 +35,7 @@ contract Employees {
     function createEmployee (string memory _name, string memory _gender, uint _dateOfBirth, string memory _email, address _account) internal onlyAdmin {
        
         if(employees[_account].dateOfBirth == 0) {
-            employees[_account].employeeId = id.length;
+            employees[_account].employeeId = id.length+1;
             employees[_account].name = _name;
             employees[_account].gender = _gender;
             employees[_account].dateOfBirth = _dateOfBirth;
@@ -70,7 +70,7 @@ contract Employees {
         return (employees[_account].employeeId, employees[_account].name, employees[_account].dateOfBirth, employees[_account].email , employees[_account].account);
     }
 
-    function deleteEmployee (address _account) public onlyAdmin {
+    function deleteEmployee (address _account) internal onlyAdmin {
         string memory name = employees[_account].name;
         uint employeeId = employees[_account].employeeId;
         delete (employees[_account]);
