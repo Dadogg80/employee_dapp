@@ -60,11 +60,7 @@ function inputData() {
     var _workerAddress = $("#workerAddress_input").val();
     var _departmentAddress = $("#departmentAddress_input").val();
     var _salary = $("#salary_input").val();
-    /*
-    var config = {
-        value: web3.utils.toWei("1", "ether")
-    }
-    */
+    
     console.log(_name, _gender, _dateOfBirth, _email, _salary, _workerAddress, _departmentAddress)
 
     instance.methods.createWorker(_name, _gender, _dateOfBirth, _email, _workerAddress, _salary, _departmentAddress).send({}, function(error, txHash){
@@ -96,14 +92,21 @@ function fetchAndDisplay(){
     instance.methods.getEmployee(_workerAddress).call().then( function(res) {
         console.log('Button Pushed!');
         console.log(res);    
+        let id = res[0];
+        let name = res[1];
+        let dateOfBirth = res[2];
+        let email = res[3];
+        let workerAddress = res[4];
+
         
-        $("#id_output").text(res[0]);
-        $("#name_output").text(res[1]);
+
+        $("#id_output").val(id);
+        $("#name_output").val(name);
        //$("#gender_output").text(res[]);
-        $("#dateOfBirth_output").text(res[2]);
-        $("#email_output").text(res[3]);
-        $("#workerAddress_output").text(res[4]);
+        $("#dateOfBirth_output").val(dateOfBirth);
+        $("#email_output").val(email);
+        $("#workerAddress_output").val(workerAddress);
        // $("#departmentAddress_output").text(res.data.departmentAddress);
        // $("#salary_output").text(res.data.salary);
-    })
+    }); 
 }
