@@ -97,16 +97,18 @@ function fetchAndDisplay(){
         let dateOfBirth = res[2];
         let email = res[3];
         let workerAddress = res[4];
-
+        let departmentAddress = res[5];
+        let salary = res[6];
+        let gender = res[7];
         
 
         $("#id_output").val(id);
         $("#name_output").val(name);
-       //$("#gender_output").text(res[]);
+        $("#gender_output").val(gender);
         $("#dateOfBirth_output").val(dateOfBirth);
         $("#email_output").val(email);
         $("#workerAddress_output").val(workerAddress);
-       // $("#departmentAddress_output").text(res.data.departmentAddress);
-       // $("#salary_output").text(res.data.salary);
+        $("#departmentAddress_output").val(departmentAddress);
+        $("#salary_output").val(salary);
     }); 
 }

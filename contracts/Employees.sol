@@ -22,15 +22,15 @@ contract Employees {
         string email;
         address account;
     }
-    mapping (address => uint) private salary;
-    mapping(address => address) private department;
+    mapping (address => uint) public salary;
+    mapping(address => address) public department;
     mapping (address => Employee) public employees;
  
     uint[] public id;
 
-    event employeeCreated (uint employeeId, string name, address account);
-    event employeeDeleted (uint employeeId, string name, address account);
+    event employeeCreated (uint employeeId, string name, string gender, uint dateOfBirth, string email, address account);
     event employeeUpdated (uint employeeId, string name, string gender, uint dateOfBirth, string email, address account);
+    event employeeDeleted (uint employeeId, string name, address account);
 
     function createEmployee (string memory _name, string memory _gender, uint _dateOfBirth, string memory _email, address _account) internal onlyAdmin {
        
@@ -44,7 +44,15 @@ contract Employees {
             
             
             id.push(employees[_account].employeeId);
-            emit employeeCreated (employees[_account].employeeId, _name, _account);
+
+            emit employeeCreated (
+                employees[_account].employeeId, 
+                employees[_account].name, 
+                employees[_account].gender, 
+                employees[_account].dateOfBirth, 
+                employees[_account].email, 
+                employees[_account].account
+            );
         } else {
             employees[_account].employeeId = id.length;
             employees[_account].name = _name;
@@ -65,9 +73,14 @@ contract Employees {
         }
     }
 
-    function getEmployee(address _account) public view returns (uint, string memory, uint, string memory, address)
-    {
-        return (employees[_account].employeeId, employees[_account].name, employees[_account].dateOfBirth, employees[_account].email , employees[_account].account);
+    function getEmployee(address _account) public view returns (uint, string memory, uint, string memory, address, address, uint, string memory) {
+        return (employees[_account].employeeId,
+        employees[_account].name,
+        employees[_account].dateOfBirth,
+        employees[_account].email,
+        employees[_account].account,
+        department[_account],
+        salary[_account],employees[_account].gender);
     }
 
     function deleteEmployee (address _account) internal onlyAdmin {
@@ -97,3 +110,5 @@ contract Employees {
     }
 
 }
+
+
