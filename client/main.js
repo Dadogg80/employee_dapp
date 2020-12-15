@@ -97,7 +97,7 @@ function fetchAndDisplay(){
         console.log('Button Pushed!');
         console.log(res);    
         
-        $("#employeeId_output").text(res[0]);
+        $("#id_output").text(res[0]);
         $("#name_output").text(res[1]);
        //$("#gender_output").text(res[]);
         $("#dateOfBirth_output").text(res[2]);

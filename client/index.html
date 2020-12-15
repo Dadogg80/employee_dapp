@@ -37,6 +37,7 @@
           </div>
         </div>  
       <div id="workerCreation"></div>
+      <br>
     
       <div class="container">  
         <div class="row justify-content-md-center">
@@ -44,7 +45,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="static">Register new employee</button>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2" data-backdrop="static">Retrieve employee info</button>
           </div>
-                      <!-- Modal -->
+        
             <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -53,6 +54,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                   <div class="modal-body">
+                  <form class="row g-3" id='post-data'>
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" id="name_input" placeholder="Name" >
                     </div>
@@ -77,10 +79,11 @@
                       <input type="text" class="form-control" id="departmentAddress_input" placeholder="Department Address">
                     </div>
                     <button type="button" id="add_data_button" class="btn btn-secondary btn-sm">Add Data</button>
-                  </div>  
+                    </div>
+                  </form>  
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  </div>
+                  </div>               
                 </div>   
               </div>
             </div>
@@ -94,49 +97,58 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                   <div class="modal-body">
-                    <div class="input mb-6">
+                    <div class="input col-8">
                       <input type="text" class="form-control" id="getWorkerAddress_input" placeholder="Input Worker Address">
                     </div>
-                    <div>
-                      Id: <span id="employeeId_output"></span>
-                    </div>
-                    <div>
-                      Name: <span id="name_output"></span>
-                    </div>
-                    <div>
-                      Gender: <span id="gender_output"></span>
-                    </div>
-                    <div>
-                      Date of Birth: <span id="dateOfBirth_output"></span>
-                    </div>
-                    <div>
-                      Email: <span id="email_output"></span>
-                    </div>
-                    <div>
-                      Worker Address: <span id="workerAddress_output"></span>
-                    </div>
-                    <div>
-                      Salary: <span id="salary_output"></span>
-                    </div>
-                    <div>
-                      Department Address: <span id="departmentAddress_output"></span>
-                    </div>
+                   <br>
+                    <form class="row g-3" id='get-data'>
+                      <div class="col-md-2">
+                        <label for="id_output" class="col-md-2 col-form-label">Id:</label>  
+                        <input class="form-control" id="id_output" type="number" disabled readonly> 
+                      </div>
+                      <div class="col-md-6">
+                        <label for="name_output" class="col-sm-2 col-form-label">Name:</label>  
+                        <input class="form-control" id="name_output" type="text" disabled readonly>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="dateOfBirth_output" class="col-sm-5 col-form-label">Date of birth:</label>  
+                        <input class="form-control" id="dateOfBirth_output" type="number" disabled readonly>
+                      </div>
+                      <div class="col-md-3">
+                        <label for="gender_output" class="col-md-2 col-form-label">Gender:</label>  
+                        <input class="form-control" id="gender_output" type="text" disabled readonly> 
+                      </div>
+                      <div class="col-md-6">
+                        <label for="email_output" class="col-sm-2 col-form-label">Email:</label>  
+                        <input class="form-control" id="email_output" type="email" disabled readonly>
+                      </div>
+                      <div class="col-md-3">
+                        <label for="salary_output" class="col-sm-2 col-form-label">Salary:</label>  
+                        <input class="form-control" id="salary_output" type="number" disabled readonly>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="workerAddress_output" class="col-sm-2 col-form-label">Address:</label>  
+                        <input class="form-control" id="workerAddress_output" type="text" disabled readonly>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="departmentAddress_output" class="col-sm-2 col-form-label">Department:</label>  
+                        <input class="form-control" id="departmentAddress_output" type="text" disabled readonly>
+                      </div>
+                      <div>
+                        <button type="button" id="get_data_button" class="btn btn-secondary btn-sm">Get Employee Information</button>
+                      </div>
+                    </form>
                     <br>
-                    <button type="button" id="get_data_button" class="btn btn-secondary btn-sm">Get Employee Information</button>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  </div>
-                </div>        
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>        
+                </div>
               </div>
-            </div>
-          </div>  
+            </div>  
+          </div>
         </div>
       </div>
-
-
-
-
      
     <!-- Bootstrap Bundle with Popper -->
     <script src="./main.js"></script>
