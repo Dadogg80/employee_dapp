@@ -10,7 +10,7 @@ const abi = [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "employeeId",
+        "name": "id",
         "type": "uint256"
       },
       {
@@ -21,9 +21,39 @@ const abi = [
       },
       {
         "indexed": false,
+        "internalType": "string",
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "startDate",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "indexed": false,
         "internalType": "address",
         "name": "account",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "department",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "salary",
+        "type": "uint256"
       }
     ],
     "name": "employeeCreated",
@@ -35,7 +65,7 @@ const abi = [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "employeeId",
+        "name": "id",
         "type": "uint256"
       },
       {
@@ -60,7 +90,7 @@ const abi = [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "employeeId",
+        "name": "id",
         "type": "uint256"
       },
       {
@@ -72,13 +102,13 @@ const abi = [
       {
         "indexed": false,
         "internalType": "string",
-        "name": "gender",
+        "name": "location",
         "type": "string"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "dateOfBirth",
+        "name": "startDate",
         "type": "uint256"
       },
       {
@@ -92,6 +122,18 @@ const abi = [
         "internalType": "address",
         "name": "account",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "department",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "salary",
+        "type": "uint256"
       }
     ],
     "name": "employeeUpdated",
@@ -105,36 +147,11 @@ const abi = [
         "type": "address"
       }
     ],
-    "name": "employees",
+    "name": "departments",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "employeeId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "gender",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "dateOfBirth",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "email",
-        "type": "string"
-      },
-      {
         "internalType": "address",
-        "name": "account",
+        "name": "",
         "type": "address"
       }
     ],
@@ -150,7 +167,7 @@ const abi = [
         "type": "uint256"
       }
     ],
-    "name": "id",
+    "name": "employeeId",
     "outputs": [
       {
         "internalType": "uint256",
@@ -179,58 +196,18 @@ const abi = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_account",
-        "type": "address"
-      }
-    ],
-    "name": "getEmployee",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
         "internalType": "string",
         "name": "_name",
         "type": "string"
       },
       {
         "internalType": "string",
-        "name": "_gender",
+        "name": "_location",
         "type": "string"
       },
       {
         "internalType": "uint256",
-        "name": "_dateOfBirth",
+        "name": "_startDate",
         "type": "uint256"
       },
       {
@@ -240,31 +217,92 @@ const abi = [
       },
       {
         "internalType": "address",
-        "name": "_workerAddress",
+        "name": "_account",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_department",
         "type": "address"
       },
       {
         "internalType": "uint256",
         "name": "_salary",
         "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "_department",
-        "type": "address"
       }
     ],
-    "name": "createWorker",
-    "outputs": [],
+    "name": "createEmployee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getEmployee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "startDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
         "internalType": "address",
-        "name": "_workerAddress",
+        "name": "account",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "department",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "salary",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "location",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
       }
     ],
     "name": "fireWorker",
