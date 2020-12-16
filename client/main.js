@@ -2,7 +2,7 @@
 var web3 = new Web3(Web3.givenProvider);
 var instance;
 var admin; 
-var smartContract = "0xdEaA6F35065B712a86E89ED4B026771eb35ecf72";
+var smartContract = "0xc612E4ED037DEFef6746a5DF3a9F1a763C284FB9";
 
 
 $(document).ready(function() {
