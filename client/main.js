@@ -105,11 +105,11 @@ function fetchAndDisplay(){
 
         $("#id_output").val(id);
         $("#name_output").val(name);
-        $("#gender_output").val(gender);
         $("#dateOfBirth_output").val(dateOfBirth);
         $("#email_output").val(email);
-        /*
         $("#workerAddress_output").val(workerAddress);
+        /*
+        $("#gender_output").val(gender);
         $("#departmentAddress_output").val(departmentAddress);
         $("#salary_output").val(salary);
         */
