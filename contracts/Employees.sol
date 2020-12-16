@@ -28,7 +28,7 @@ contract Employees {
    
     mapping(address => address) public departments;
  
-    uint256[] public employeeId;
+    uint256 public employeeId = 0;
     //  Employee array, called employees
     Employee[] employees;
 
@@ -41,7 +41,7 @@ contract Employees {
         require (_department != _account);
         departments[_department] = _department;
         Employee memory _e = Employee({
-            id: employeeId.length +1,
+            id: employeeId++,
             name: _name,
             location: _location,
             startDate: _startDate,
