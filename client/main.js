@@ -2,8 +2,7 @@
 var web3 = new Web3(Web3.givenProvider);
 var instance;
 var admin; 
-var smartContract = "0x1F52736f0F58B395a8Ef21F4Eb9AECDbBc17e07a";
-
+var smartContract = "Input the smartContract address here";
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts) {
@@ -89,12 +88,10 @@ function fetchAndDisplay(){
     var _id = $("#getWorkerId_input").val();
     console.log(_id);
 
-    instance.methods.getEmployee(_id).call().then( function(res) {
-        
+    instance.methods.getEmployee(_id).call().then( function(res) {      
         console.log('Button Pushed!');
         console.log(res);    
         
-
         //let id = res[0];
         let name = res[1];
         let startDate = res[2];
@@ -114,4 +111,5 @@ function fetchAndDisplay(){
         $("#salary_output").val(salary);
         
     }); 
+
 }
