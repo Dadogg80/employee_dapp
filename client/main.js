@@ -32,7 +32,7 @@ $(document).ready(function() {
             let workerAddress = event.returnValues.workerAddress;
             let department = event.returnValues.department;
             let salary = event.returnValues.salary;
-            $("#workerCreation").css("display", "block");
+            $("#workerCreation").css("display", "block", "color", "green");
             $("#workerCreation").text(`EmployeeId : ${employeeId}. Name : ${name}.\n
             Located : ${location}. Start date : ${startDate}. Email : ${email}.\n
             Salary : ${salary}. Worker Address : ${workerAddress}.\n
@@ -40,7 +40,7 @@ $(document).ready(function() {
         })
         .on('error', console.error);
         
-    });
+    }); 
    
 
     $("#add_data_button").click(inputData);
@@ -90,9 +90,12 @@ function fetchAndDisplay(){
     console.log(_id);
 
     instance.methods.getEmployee(_id).call().then( function(res) {
+        
         console.log('Button Pushed!');
         console.log(res);    
-        let id = res[0];
+        
+
+        //let id = res[0];
         let name = res[1];
         let startDate = res[2];
         let email = res[3];
@@ -101,7 +104,7 @@ function fetchAndDisplay(){
         let salary = res[6];
         let location = res[7];
 
-        $("#id_output").val(id);
+        $("#id_output").val(_id);
         $("#name_output").val(name);
         $("#location_output").val(location);
         $("#startDate_output").val(startDate);
@@ -109,5 +112,6 @@ function fetchAndDisplay(){
         $("#workerAddress_output").val(account);
         $("#departmentAddress_output").val(departmentAddress);
         $("#salary_output").val(salary);
+        
     }); 
 }
