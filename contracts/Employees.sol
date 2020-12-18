@@ -41,13 +41,13 @@ contract Employees {
         require (_department != _account);
         departments[_department] = _department;
         Employee memory _e = Employee({
-            id: employeeId++,
+            id: employeeId+1,
             name: _name,
             location: _location,
             startDate: _startDate,
             email: _email,
             account: _account,
-            department: _department,
+            department: departments[_department],
             salary: _salary
         });
 
