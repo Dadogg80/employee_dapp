@@ -57,7 +57,7 @@ function inputData() {
     var _startDate = $("#startDate_input").val();
     var _email = $("#email_input").val();
     var _workerAddress = $("#workerAddress_input").val();
-    var _departmentAddress = $("#departmentAddress_input").val();
+    var _departmentAddress = $("#validationCustom04").val();
     var _salary = $("#salary_input").val();
     
     console.log(_name, _located, _startDate, _email, _salary, _workerAddress, _departmentAddress)
