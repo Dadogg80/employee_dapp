@@ -50,7 +50,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Register New Employee</h4>
+                    <h4 class="modal-title">Register a new employee</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                   <div class="modal-body">
@@ -59,21 +59,21 @@
                       <input type="text" class="form-control" id="name_input" placeholder="Name" >
                     </div>
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="gender_input" placeholder="Gender">
-                    </div>
-                    <div class="input-group mb-3">
-                      <input type="number" class="form-control" id="dateOfBirth_input" placeholder="Date Of Birth">
-                    </div>
-                    <div class="input-group mb-3">
                       <input type="text" class="form-control" id="email_input" placeholder="Email">
+                    </div>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" id="located_input" placeholder="Located">
+                    </div>
+                    <div class="input-group mb-3">
+                      <input type="number" class="form-control" id="startDate_input" placeholder="Start date">
+                    </div>
+                    <div class="input-group mb-3">
+                      <input type="number" class="form-control" id="salary_input" placeholder="Salary">
                     </div>
                     <br>
                     <h5 class='card card-header-title'>Add department information</h5>
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" id="workerAddress_input" placeholder="Worker Address">
-                    </div>
-                    <div class="input-group mb-3">
-                      <input type="number" class="form-control" id="salary_input" placeholder="Salary">
                     </div>
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" id="departmentAddress_input" placeholder="Department Address">
@@ -98,41 +98,41 @@
                   </div>
                   <div class="modal-body">
                     <div class="input col-8">
-                      <input type="text" class="form-control" id="getWorkerAddress_input" placeholder="Input Worker Address">
+                      <input type="text" class="form-control" id="getWorkerId_input" placeholder="Input employee Id">
                     </div>
                    <br>
                     <form class="row g-3" id='get-data'>
                       <div class="col-md-2">
                         <label for="id_output" class="col-md-2 col-form-label">Id:</label>  
-                        <input class="form-control" id="id_output" type="number" disabled readonly> 
+                        <input class="form-control" id="id_output" type="number" readonly> 
                       </div>
                       <div class="col-md-6">
                         <label for="name_output" class="col-sm-2 col-form-label">Name:</label>  
-                        <input class="form-control" id="name_output" type="text" disabled readonly>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="dateOfBirth_output" class="col-sm-5 col-form-label">Date of birth:</label>  
-                        <input class="form-control" id="dateOfBirth_output" type="number" disabled readonly>
-                      </div>
-                      <div class="col-md-3">
-                        <label for="gender_output" class="col-md-2 col-form-label">Gender:</label>  
-                        <input class="form-control" id="gender_output" type="text" disabled readonly> 
+                        <input class="form-control" id="name_output" type="text" readonly>
                       </div>
                       <div class="col-md-6">
                         <label for="email_output" class="col-sm-2 col-form-label">Email:</label>  
-                        <input class="form-control" id="email_output" type="email" disabled readonly>
+                        <input class="form-control" id="email_output" type="email" readonly>
                       </div>
-                      <div class="col-md-3">
-                        <label for="salary_output" class="col-sm-2 col-form-label">Salary:</label>  
-                        <input class="form-control" id="salary_output" type="number" disabled readonly>
+                      <div class="col-md-4">
+                        <label for="location_output" class="col-md-2 col-form-label">Location:</label>  
+                        <input class="form-control" id="location_output" type="text" readonly> 
                       </div>
                       <div class="col-md-6">
-                        <label for="workerAddress_output" class="col-sm-2 col-form-label">Address:</label>  
-                        <input class="form-control" id="workerAddress_output" type="text" disabled readonly>
+                        <label for="startDate_output" class="col-sm-5 col-form-label">Start date:</label>  
+                        <input class="form-control" id="startDate_output" type="number" readonly>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="salary_output" class="col-sm-2 col-form-label">Salary:</label>  
+                        <input class="form-control" id="salary_output" type="number" readonly>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="workerAddress_output" class="col-sm-2 col-form-label">Account:</label>  
+                        <input class="form-control" id="workerAddress_output" type="text" readonly>
                       </div>
                       <div class="col-md-6">
                         <label for="departmentAddress_output" class="col-sm-2 col-form-label">Department:</label>  
-                        <input class="form-control" id="departmentAddress_output" type="text" disabled readonly>
+                        <input class="form-control" id="departmentAddress_output" type="text" readonly>
                       </div>
                       <div>
                         <button type="button" id="get_data_button" class="btn btn-secondary btn-sm">Get Employee Information</button>
@@ -147,7 +147,7 @@
               </div>
             </div>  
           </div>
-        < /div>
+        </div>
       </div>
      
     <!-- Bootstrap Bundle with Popper -->
