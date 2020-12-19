@@ -14,6 +14,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" >
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/svgs/brands/ethereum.svg">
+
   </head>
   <body>
 
@@ -21,7 +23,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">YOUR LOGO</a>
+          <a class="navbar-brand" href="#">Viken Blockchain Solutions</a>
         </div>
       </nav>
     </div> 
@@ -68,17 +70,21 @@
                       <input type="number" class="form-control" id="startDate_input" placeholder="Start date">
                     </div>
                     <div class="input-group mb-3">
+                      <span class="input-group-text fab fa-ethereum" id="inputGroupPrepend"></span>
                       <input type="number" class="form-control" id="salary_input" placeholder="Salary">
                     </div>
+                
                     <br>
-                    <h5 class='card card-header-title'>Add department information</h5>
+                    <div class="modal-header">
+                    <h4 class='modal-title'>Add address and department</h4>
+                    </div>
                     <div class="input-group md-3">
                       <input type="text" class="form-control" id="workerAddress_input" placeholder="Worker Address">
                     </div>
-                    <div class="col-5">
+                    <div class="col-6">
                       <label for="validationCustom04" class="form-label">Department</label>
                       <select class="form-select" id="validationCustom04" required>
-                        <option selected disabled value="">-- Choose a department --</option>
+                        <option selected disabled value="">--Choose department--</option>
                         <option value="0x9d5fB55ea61a8123c0FeB523A996Ead61aB485d1">Administration</option>
                         <option value="0x5101202459ef807aef0F221d2C859032032aF92a">Finance</option>
                         <option disabled value="Enter Eth Address Here">Human Resources</option>
@@ -90,12 +96,6 @@
                         Please select a valid Department.
                       </div>
                     </div>
-                    <!--  
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="departmentAddress_input" placeholder="Department Address">
-                      </div>
-                    -->
-
                     <button type="button" id="add_data_button" class="btn btn-secondary btn-sm">Add Data</button>
                     </div>
                   </form>  
@@ -115,40 +115,59 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                   <div class="modal-body">
-                    <div class="input col-8">
-                      <input type="text" class="form-control" id="getWorkerId_input" placeholder="Input employee Id">
+                    <div class="input col-4">
+                      <label for="getWorkerId_input" class="col-sm-8 col-form-label">Insert the employee id:</label>
+                      <input type="text" class="form-control" id="getWorkerId_input">
                     </div>
                    <br>
                     <form class="row g-3" id='get-data'>
-                      <div class="col-md-2">
+                      <div class="col-3">
                         <label for="id_output" class="col-md-2 col-form-label">Id:</label>  
-                        <input class="form-control" id="id_output" type="number" readonly> 
+                        <div class="input-group">
+                          <span class="input-group-text fas fa-address-card" id="inputGroupPrepend"></span>
+                          <input class="form-control" id="id_output" type="number" readonly>   
+                        </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-6">
                         <label for="name_output" class="col-sm-2 col-form-label">Name:</label>  
+                        <div class="input-group">
+                          <span class="input-group-text fas fa-user-alt" id="inputGroupPrepend"></span>
                         <input class="form-control" id="name_output" type="text" readonly>
                       </div>
-                      <div class="col-md-6">
+                    </div>
+                      <div class="col-6">
                         <label for="email_output" class="col-sm-2 col-form-label">Email:</label>  
-                        <input class="form-control" id="email_output" type="email" readonly>
+                        <div class="input-group">
+                          <span class="input-group-text fas fa-at" id="inputGroupPrepend"></span>
+                          <input class="form-control" id="email_output" type="email" readonly>
+                        </div>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-5">
                         <label for="location_output" class="col-md-2 col-form-label">Location:</label>  
+                        <div class="input-group">
+                          <span class="input-group-text fas fa-map-marked-alt" id="inputGroupPrepend"></span>
                         <input class="form-control" id="location_output" type="text" readonly> 
                       </div>
-                      <div class="col-md-6">
+                    </div> 
+                      <div class="col-6">
                         <label for="startDate_output" class="col-sm-5 col-form-label">Start date:</label>  
+                        <div class="input-group">
+                        <span class="input-group-text fas fa-calendar-alt" id="inputGroupPrepend"></span>
                         <input class="form-control" id="startDate_output" type="number" readonly>
                       </div>
-                      <div class="col-md-4">
-                        <label for="salary_output" class="col-sm-2 col-form-label">Salary:</label>  
-                        <input class="form-control" id="salary_output" type="number" readonly>
+                    </div>
+                      <div class="col-5">
+                        <label for="salary_output" class="col-sm-2 col-form-label">Salary:</label>
+                        <div class="input-group">
+                          <span class="input-group-text fab fa-ethereum" id="inputGroupPrepend"></span>  
+                          <input class="form-control" id="salary_output" type="number" readonly >
+                        </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-6">
                         <label for="workerAddress_output" class="col-sm-2 col-form-label">Account:</label>  
                         <input class="form-control" id="workerAddress_output" type="text" readonly>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-6">
                         <label for="departmentAddress_output" class="col-sm-2 col-form-label">Department:</label>  
                         <input class="form-control" id="departmentAddress_output" type="text" readonly>
                       </div>
