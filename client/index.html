@@ -56,7 +56,7 @@
           
             <div class="container">  
               <div class="row justify-content-md-center">
-                <div class="col-md-6">
+                <div class="col-6">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="static">Register new employee</button>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2" data-backdrop="static">Retrieve employee info</button>
                 </div>
@@ -124,31 +124,34 @@
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h4 class="modal-title">Retrieve employee information</h4>
+                          <h5 class="modal-title">Retrieve employee information</h5>
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="modal-body">
-                          <div class="input col-4">
-                            <label for="getWorkerId_input" class="col-sm-8 col-form-label">Insert the employee id:</label>
-                            <input type="text" class="form-control" id="getWorkerId_input">
+                          <div class="modal-body">
+                            <form class="row g-3" id='get-data'>
+                              <div class="row">
+                            <div class="input col-4">
+                              <label for="getWorkerId_input" class="col-sm-10 col-form-label">Search Id: </label>
+                              <input type="text" class="form-control" id="getWorkerId_input" placeholder="Employee Id">
+                            </div>
                           </div>
-                         <br>
-                          <form class="row g-3" id='get-data'>
+                          
+                            <br> 
                             <div class="col-3">
-                              <label for="id_output" class="col-md-2 col-form-label">Id:</label>  
+                              <label for="id_output" class="col-md-3 col-form-label">Id:</label>  
                               <div class="input-group">
                                 <span class="input-group-text fas fa-address-card" id="inputGroupPrepend"></span>
                                 <input class="form-control" id="id_output" type="number" readonly>   
                               </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-5">
                               <label for="name_output" class="col-sm-2 col-form-label">Name:</label>  
                               <div class="input-group">
-                                <span class="input-group-text fas fa-user-alt" id="inputGroupPrepend"></span>
+                                <span class="input-group fas fa-user-alt" id="inputGroupPrepend"></span>
                               <input class="form-control" id="name_output" type="text" readonly>
                             </div>
                           </div>
-                            <div class="col-6">
+                            <div class="col-5">
                               <label for="email_output" class="col-sm-2 col-form-label">Email:</label>  
                               <div class="input-group">
                                 <span class="input-group-text fas fa-at" id="inputGroupPrepend"></span>
@@ -163,7 +166,7 @@
                             </div>
                           </div> 
                             <div class="col-6">
-                              <label for="startDate_output" class="col-sm-5 col-form-label">Start date:</label>  
+                              <label for="startDate_output" class="col-sm-6 col-form-label">Start date:</label>  
                               <div class="input-group">
                               <span class="input-group-text fas fa-calendar-alt" id="inputGroupPrepend"></span>
                               <input class="form-control" id="startDate_output" type="number" readonly>
