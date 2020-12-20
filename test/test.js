@@ -1,5 +1,5 @@
-import truffleAssert from 'truffle-assertions';
 const Employees = artifacts.require("Employees");
+const truffleAssert = require("truffle-assertions");
 
 const department = "0x1bE21d22f40de95150c80f0761C98d99a390298C";
 const worker1 = "0x34f213A881b4D01cfBfEc9e8D55185E3A3fF92E3";
