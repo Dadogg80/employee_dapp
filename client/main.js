@@ -2,7 +2,7 @@
 var web3 = new Web3(Web3.givenProvider);
 var instance;
 var admin; 
-var smartContract = "Input the smartContract address here";
+var smartContract = "input the smartcontract address here";
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts) {
@@ -28,14 +28,24 @@ $(document).ready(function() {
             let location = event.returnValues.location;
             let startDate = event.returnValues.startDate;
             let email = event.returnValues.email;
-            let workerAddress = event.returnValues.workerAddress;
+            let account = event.returnValues.account;
             let department = event.returnValues.department;
             let salary = event.returnValues.salary;
-            $("#workerCreation").css("display", "block", "color", "green");
-            $("#workerCreation").text(`EmployeeId : ${employeeId}. Name : ${name}.\n
-            Located : ${location}. Start date : ${startDate}. Email : ${email}.\n
-            Salary : ${salary}. Worker Address : ${workerAddress}.\n
-            Department : ${department}. `);
+            $("#workerCreation").css("display", "block");
+            $("#workerCreation").html($(`<div class="row" id="event">
+            <ol>
+            <li>EmployeeId : ${employeeId}.</li>
+            <li>Name : ${name}.</li>
+            <li>Located : ${location}.</li>
+            <li>Start date : ${startDate}.</li>
+            <li>Email : ${email}.</li>
+            <li>Salary : ${salary}.</li> 
+            <li>Worker Address : ${account}.</li>
+            <li>Department : ${department}.</li> 
+            </ol>
+            </div>
+            
+            `));
         })
         .on('error', console.error);
         
