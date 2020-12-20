@@ -26,22 +26,22 @@ contract Employees {
         uint256 salary;
     }
    
-    mapping(address => address) public departments;
- 
+    mapping(address => address) departments;
+
+
     uint256 public employeeId = 0;
 
     //  Employee array, called employees
     Employee[] employees;
 
+    //Events
     event employeeCreated (uint id, string name, string location, string startDate, string email, address account, address department, uint salary);
     event employeeDeleted (uint id, string name, address account);
 
-    function createEmployee (string memory _name, string memory _location, string memory _startDate,string memory _email, address _account, address _department, uint _salary) public 
-    returns(uint256, string memory, string memory, string memory, string memory, address, address, uint) {   
+    function createEmployee (string memory _name, string memory _location, string memory _startDate,string memory _email, address _account, address _department, uint _salary) public {   
         require (_department != _account, "Department and Worker address can't be the same. Pick another address.");
         require (msg.sender != _account, "An employee can't register themself.");    
         uint _id = employeeId++;
-        
         departments[_account] = _department;
 
         Employee memory _e = Employee({
@@ -68,8 +68,6 @@ contract Employees {
                 _e.department,
                 _e.salary
             );
-
-            return (_e.id,_e.name, _e.location,_e.startDate, _e.email, _e.account,_e.department,_e.salary);
     }
 
     function getEmployee(uint _index) public view returns (uint256 id, string memory name, string memory startDate, string memory email, address account, address department, uint256 salary, string memory location) {
