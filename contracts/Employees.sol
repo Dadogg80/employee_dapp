@@ -19,40 +19,44 @@ contract Employees {
         uint256 id;
         string name;
         string location;
-        uint256 startDate;
+        string startDate;
         string email;
         address account;
         address department;
         uint256 salary;
     }
    
-    mapping(address => address) public departments;
- 
+    mapping(address => address) departments;
+
+
     uint256 public employeeId = 0;
+
     //  Employee array, called employees
     Employee[] employees;
 
-    event employeeCreated (uint id, string name, string location, uint startDate, string email, address account, address department, uint salary);
-    event employeeUpdated (uint id, string name, string location, uint startDate, string email, address account, address department, uint salary);
+    //Events
+    event employeeCreated (uint id, string name, string location, string startDate, string email, address account, address department, uint salary);
     event employeeDeleted (uint id, string name, address account);
 
-    function createEmployee (string memory _name, string memory _location, uint _startDate,string memory _email, address _account, address _department, uint _salary) public onlyAdmin returns(uint256)
-    {   
-        require (_department != _account);
-        departments[_department] = _department;
+    function createEmployee (string memory _name, string memory _location, string memory _startDate,string memory _email, address _account, address _department, uint _salary) public {   
+        require (_department != _account, "Department and Worker address can't be the same. Pick another address.");
+        require (msg.sender != _account, "An employee can't register themself.");    
+        uint _id = employeeId++;
+        departments[_account] = _department;
+
         Employee memory _e = Employee({
-            id: employeeId+1,
+            id: _id,
             name: _name,
             location: _location,
             startDate: _startDate,
             email: _email,
             account: _account,
-            department: departments[_department],
+            department: departments[_account],
             salary: _salary
         });
 
             employees.push(_e);
-            uint newEmployeeId = employees.length;
+           // uint newEmployeeId = employees.length;
             
             emit employeeCreated (
                 _e.id, 
@@ -64,12 +68,10 @@ contract Employees {
                 _e.department,
                 _e.salary
             );
-
-            return newEmployeeId;
     }
 
-    function getEmployee(uint _id) public view returns (uint256 id, string memory name, uint256 startDate, string memory email, address account, address department, uint256 salary, string memory location) {
-        Employee memory e = employees[_id];
+    function getEmployee(uint _index) public view returns (uint256 id, string memory name, string memory startDate, string memory email, address account, address department, uint256 salary, string memory location) {
+        Employee memory e = employees[_index];
 
             id = e.id;
             name = e.name;
@@ -86,18 +88,10 @@ contract Employees {
         uint id = _id;
         address account = employees[_id].account;
         delete (employees[_id]);
-        assert (employees[_id].startDate == 0);
+        assert (employees[_id].salary == 0);
 
         emit employeeDeleted(id, name, account);
     }
-
-    function fireWorker (uint _id) public {
-        require (msg.sender != employees[_id].account);
-        address account = employees[_id].account;
-        deleteEmployee(_id);
-        delete(departments[account]);
-    }
-
 }
 
 
