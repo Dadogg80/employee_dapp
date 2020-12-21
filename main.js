@@ -65,13 +65,13 @@ function inputData() {
     
     console.log(name, located, startDate, email, salary, workerAddress, departmentAddress)
 
-    instance.methods.createEmployee(_name, _located, _startDate, _email, _workerAddress, _departmentAddress, _salary).send({}, function(error, txHash){
+    instance.methods.createEmployee(name, located, startDate, email, workerAddress, departmentAddress, salary).send({}, function(error, txHash){
         if(error){
             console.warn(error);
         }
         else{
             console.log(txHash);
-            console.log(`New Worker: ${_workerAddress} is connected to department address ${_departmentAddress}.`);
+            console.log(`New Worker: ${workerAddress} is connected to department address ${departmentAddress}.`);
             console.log(`Transaction Hash is: \ntxHash: ${txHash} .`);
         }
     })
