@@ -15,7 +15,7 @@ $(document).ready(function() {
         console.log(instance);
         console.log(`Owner account is ${admin}`)
        
-        instance.events.allEvents().on('data', function(event){
+        instance.events.allEvents().on('data', (event) => {
             console.log(event);
 
             let employeeId = event.returnValues.id;
@@ -57,11 +57,8 @@ $(document).ready(function() {
     }); 
    
 
-    $("#add_data_button").click(inputData);
-    $("#get_data_button").click(fetchAndDisplay);
-
-    console.log('Application is ready for testing!');
-    alert('Web3 is loaded.');
+    $("#add_data_button").on("click", inputData);
+    $("#get_data_button").on("click", fetchAndDisplay);
 });
 
 
