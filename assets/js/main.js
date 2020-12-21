@@ -26,20 +26,32 @@ $(document).ready(function() {
             let account = event.returnValues.account;
             let department = event.returnValues.department;
             let salary = event.returnValues.salary;
-            $("#workerCreation").css("display", "block");
-            $("#workerCreation").html($(`<div class="row" id="event">
-            <ol>
-            <li>EmployeeId : ${employeeId}.</li>
-            <li>Name : ${name}.</li>
-            <li>Located : ${location}.</li>
-            <li>Start date : ${startDate}.</li>
-            <li>Email : ${email}.</li>
-            <li>Salary : ${salary}.</li> 
-            <li>Worker Address : ${account}.</li>
-            <li>Department : ${department}.</li> 
-            </ol>
-            </div>`
-            ));
+            
+            $("#employeeEvent").html(
+                $(`
+                <div class="card card-profile">
+                <div class="card-body">
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4>SUCCESS</h4>
+                    <p>
+                    <ol>
+                    <li><strong>EmployeeId :</strong> ${employeeId}.</li>
+                    <li><strong>Name :</strong> ${name}.</li>
+                    <li><strong>Located :</strong> ${location}.</li>
+                    <li><strong>Start date :</strong> ${startDate}.</li>
+                    <li><strong>Email :</strong> ${email}.</li>
+                    <li><strong>Salary :</strong> ${salary}.</li> 
+                    <li><strong>Worker Address :</strong> ${account}.</li>
+                    <li><strong>Department :</strong> ${department}.</li> 
+                    </ol>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            `));
         })
         .on('error', console.error); 
     }); 
@@ -55,12 +67,15 @@ $(document).ready(function() {
 
 
 function inputData() {
-    var name = $("#name_input").val();
-    var located = $("#located_input").val();
+
+    var first = $("#first_input").val();
+    var last = $("#last_input").val();
+    var name = (`${first} +${last}`);
+    var located = $("#location_input").val();
     var startDate = $("#startDate_input").val();
     var email = $("#email_input").val();
-    var workerAddress = $("#workerAddress_input").val();
-    var departmentAddress = $("#validationCustom04").val();
+    var workerAddress = $("#account_input").val();
+    var departmentAddress = $("#department_input").val();
     var salary = $("#salary_input").val();
     
     console.log(name, located, startDate, email, salary, workerAddress, departmentAddress)
@@ -109,7 +124,7 @@ function fetchAndDisplay(){
         $("#location_output").val(location);
         $("#startDate_output").val(startDate);
         $("#email_output").val(email);
-        $("#workerAddress_output").val(account);
+        $("#account_output").val(account);
         $("#departmentAddress_output").val(departmentAddress);
         $("#salary_output").val(salary);
         
