@@ -83,8 +83,7 @@
                   <div class="ripple-container"></div></a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" id="employeeEvent" href="#employeeEvent"></a>
-                    <a class="dropdown-item" href="javascript:void(0)">Another Notification<div class="ripple-container"><div class="ripple-decorator ripple-on ripple-out" style="left: 116.406px; top: 16px; background-color: rgb(255, 255, 255); transform: scale(31.3008);"></div></div></a>
-                    <a class="dropdown-item" href="javascript:void(0)">Another One</a>
+                    
                   </div>
                 </li>
                 <!-- your navbar here -->
@@ -106,7 +105,8 @@
                     <div class="card">
                       <div class="card-header card-header-primary">
                         <h4 class="card-title">Enter Employee Information</h4>
-                        <p class="card-category">WARNING! All entered information will be stored on the Ropsten Test network. This application is only for testing purposes.</p>
+                        <p class="card-category">WARNING! All information will be stored on the Ropsten test network. 
+                          This application is only for testing purposes.</p>
                       </div>
                       <div class="card-body">
 
@@ -185,7 +185,8 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </div>     
+                          <button type="reset" class="btn btn-primary pull-left" id="reset_data_button"><i class="glyphicon glyphicon-repeat"></i>reset</button>
                           <button type="button" class="btn btn-primary pull-right" id="add_data_button">add employee</button>
                           <div class="clearfix"></div>
                         </form>
@@ -195,13 +196,15 @@
                     </div>
                   </div>
                   <div class="col-sm-4">
+                  <div class="card">
                     <div class="card card-profile">
                       <div class="card-heading avatar-content text-center" style="color: white">                        
-                          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-thumbnail" alt="avatar">
-                          <h6 >Upload a different photo...</h6>
+                          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                          <h5>Upload a different photo...</h5>
                           <input type="file" class=" text-center center-inlineblock file-upload">
                       </div>      
-                    </div>                                         
+                    </div>
+                  </div>                                         
                  </div>
                 </div>
               </div>

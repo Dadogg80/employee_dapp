@@ -58,7 +58,7 @@ $(document).ready(function() {
 
     var index;        
 
-        for (index = 0; index <= 11; index++) {
+        for (index = 0; index <= 10; index++) {
             instance.methods.getEmployee(index).call().then(function(res) {      
                 console.log("getEmployee is called");    
                 console.log(res);
