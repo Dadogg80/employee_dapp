@@ -5,7 +5,7 @@ var admin;
 /* Insert your smartcontract address below */
 var smartContract = "0xb1f3F595e9EE234122afD5ad89bDA956fa8ECe8d";
 
-$(function() {
+$(document).ready(function() {
     window.ethereum.enable().then(function(accounts) {
         instance = new web3.eth.Contract( abi, smartContract, {
           from: accounts[0], 
@@ -56,13 +56,13 @@ $(function() {
         .on('error', console.error); 
     }).then( () => {
 
-        var totId = instance.methods.employeeId;
-        console.log(totId);
+    var index;        
 
-        for (let index = 0; index <= totId; index++) {
-            instance.methods.get(i).call().then( function(res) {      
+        for (index = 0; index <= 5; index++) {
+            instance.methods.getEmployee(index).call().then(function(res) {      
                 console.log("getEmployee is called");    
-                
+                console.log(res);
+
                 let id = res[0];
                 let name = res[1];
                 let salary = res[6];
