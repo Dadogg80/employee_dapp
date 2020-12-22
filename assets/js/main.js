@@ -3,9 +3,9 @@ var web3 = new Web3(Web3.givenProvider);
 var instance;
 var admin;
 /* Insert your smartcontract address below */
-var smartContract = "0x5b7C3866e4af518e486DfdaD9DA770C62f71aA7D";
+var smartContract = "0xb1f3F595e9EE234122afD5ad89bDA956fa8ECe8d";
 
-$(document).ready(function() {
+$(function() {
     window.ethereum.enable().then(function(accounts) {
         instance = new web3.eth.Contract( abi, smartContract, {
           from: accounts[0], 
@@ -54,20 +54,48 @@ $(document).ready(function() {
             `));
         })
         .on('error', console.error); 
-    }); 
+    }).then( () => {
+
+        var totId = instance.methods.employeeId;
+        console.log(totId);
+
+        for (let index = 0; index <= totId; index++) {
+            instance.methods.get(i).call().then( function(res) {      
+                console.log("getEmployee is called");    
+                
+                let id = res[0];
+                let name = res[1];
+                let salary = res[6];
+                let location = res[7];
+                
+                console.log(id, name, salary, location);
+
+                $("#table_output").append(
+                    $(`<tr></tr>`).html(`
+                    <td>${id}</td>
+                    <td>${name}</td>
+                    <td class="text-primary">$${salary}</td>
+                    <td>${location}</td>
+                    `)      
+                );
+        
+            });
+        }
+
+    });
    
 
     $("#add_data_button").on("click", inputData);
     $("#get_data_button").on("click", fetchAndDisplay);
-});
 
+});
 
 
 function inputData() {
 
     var first = $("#first_input").val();
     var last = $("#last_input").val();
-    var name = (`${first} +${last}`);
+    var name = (`${first} ${last}`);
     var located = $("#location_input").val();
     var startDate = $("#startDate_input").val();
     var email = $("#email_input").val();
@@ -104,7 +132,6 @@ function fetchAndDisplay(){
     console.log(_id);
 
     instance.methods.getEmployee(_id).call().then( function(res) {      
-        console.log('Button Pushed!');
         console.log(res);    
         
         let id = res[0];
