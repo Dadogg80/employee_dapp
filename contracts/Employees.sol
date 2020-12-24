@@ -26,13 +26,13 @@ contract Employees {
         uint256 salary;
     }
    
-    mapping(address => address) departments;
+    
 
 
-    uint256 public employeeId = 0;
+    uint256 public employeeId;
 
     //  Employee array, called employees
-    Employee[] employees;
+    Employee[] public employees;
 
     //Events
     event employeeCreated (uint id, string name, string location, string startDate, string email, address account, address department, uint salary);
@@ -42,45 +42,45 @@ contract Employees {
         require (_department != _account, "Department and Worker address can't be the same. Pick another address.");
         require (msg.sender != _account, "An employee can't register themself.");    
         uint _id = employeeId++;
-        departments[_account] = _department;
+        
 
-        Employee memory _e = Employee({
+        Employee memory employee = Employee({
             id: _id,
             name: _name,
             location: _location,
             startDate: _startDate,
             email: _email,
             account: _account,
-            department: departments[_account],
+            department: _department,
             salary: _salary
         });
 
-            employees.push(_e);
+            employees.push(employee);
            // uint newEmployeeId = employees.length;
             
             emit employeeCreated (
-                _e.id, 
-                _e.name, 
-                _e.location,
-                _e.startDate, 
-                _e.email, 
-                _e.account,
-                _e.department,
-                _e.salary
+                employee.id, 
+                employee.name, 
+                employee.location,
+                employee.startDate, 
+                employee.email, 
+                employee.account,
+                employee.department,
+                employee.salary
             );
     }
 
     function getEmployee(uint _index) public view returns (uint256 id, string memory name, string memory startDate, string memory email, address account, address department, uint256 salary, string memory location) {
-        Employee memory e = employees[_index];
+        Employee storage employee = employees[_index];
 
-            id = e.id;
-            name = e.name;
-            startDate = e.startDate;
-            email = e.email;
-            account = e.account;
-            department = e.department;
-            salary = e.salary;
-            location = e.location;
+            id = employee.id;
+            name = employee.name;
+            startDate = employee.startDate;
+            email = employee.email;
+            account = employee.account;
+            department = employee.department;
+            salary = employee.salary;
+            location = employee.location;
     }
 
     function deleteEmployee (uint _id) internal onlyAdmin {
@@ -92,6 +92,18 @@ contract Employees {
 
         emit employeeDeleted(id, name, account);
     }
+
+    function get(uint _id) public view returns (uint256 id, string memory name, uint256 salary, string memory location) {
+        
+            Employee memory employee = employees[_id];
+            
+            id = employee.id; 
+            name= employee.name; 
+            salary = employee.salary; 
+            location = employee.location;
+        
+    }
+
 }
 
 
