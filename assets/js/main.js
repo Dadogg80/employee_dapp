@@ -3,7 +3,7 @@ var web3 = new Web3(Web3.givenProvider);
 var instance;
 var admin;
 /* Insert your smartcontract address below */
-var smartContract = "0xb1f3F595e9EE234122afD5ad89bDA956fa8ECe8d";
+var smartContract = "0x545B8A77ECbB3b2F36A07095c6aEe5CB71CaC422";
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts) {
