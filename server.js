@@ -1,4 +1,4 @@
-const { clear } = require('console');
+
 var express = require('express');
 var app = express();
 
