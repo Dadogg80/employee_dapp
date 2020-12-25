@@ -25,7 +25,7 @@ app.get('/',  (request, response) => {
     response.send("Communicating with server-side!");
 });
 
-app.get($(''), (request, response) => {
+app.get('/', (request, response) => {
     console.log('GET request received at /employees');
    
 });
