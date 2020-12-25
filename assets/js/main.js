@@ -108,7 +108,7 @@ function inputData() {
     
     console.log(name, located, startDate, email, salary, account, department, textField);
     
-    writeDb();
+    
 
     instance.methods.createEmployee(name, located, startDate, email, account, department, salary).send({}, function(error, txHash){
         if(error){
