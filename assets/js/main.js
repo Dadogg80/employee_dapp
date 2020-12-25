@@ -1,11 +1,13 @@
 
+import "mySQL.js";
+
 var web3 = new Web3(Web3.givenProvider);
 var instance;
 var admin;
 /* Insert your smartcontract address below */
 var smartContract = "0x545B8A77ECbB3b2F36A07095c6aEe5CB71CaC422";
 
-$(document).ready(function() {
+$(function() {
     window.ethereum.enable().then(function(accounts) {
         instance = new web3.eth.Contract( abi, smartContract, {
           from: accounts[0], 
@@ -86,7 +88,7 @@ $(document).ready(function() {
    
 
     $("#add_data_button").on("click", inputData);
-    $("#get_data_button").on("click", fetchAndDisplay);
+    //$("#get_data_button").on("click", fetchAndDisplay);
 
 });
 
@@ -99,19 +101,22 @@ function inputData() {
     var located = $("#location_input").val();
     var startDate = $("#startDate_input").val();
     var email = $("#email_input").val();
-    var workerAddress = $("#account_input").val();
-    var departmentAddress = $("#department_input").val();
+    var account = $("#account_input").val();
+    var department = $("#department_input").val();
     var salary = $("#salary_input").val();
+    var textField = $("#textField").val();
     
-    console.log(name, located, startDate, email, salary, workerAddress, departmentAddress)
+    console.log(name, located, startDate, email, salary, account, department, textField);
+    
+    writeDb();
 
-    instance.methods.createEmployee(name, located, startDate, email, workerAddress, departmentAddress, salary).send({}, function(error, txHash){
+    instance.methods.createEmployee(name, located, startDate, email, account, department, salary).send({}, function(error, txHash){
         if(error){
             console.warn(error);
         }
         else{
-            console.log(txHash);
-            console.log(`New Worker: ${workerAddress} is connected to department address ${departmentAddress}.`);
+            //console.log(txHash);
+            console.log(`New Worker: ${account} is connected to department address ${department}.`);
             console.log(`Transaction Hash is: \ntxHash: ${txHash} .`);
         }
     })
@@ -127,6 +132,7 @@ function inputData() {
     });
 }
 
+/*
 function fetchAndDisplay(){
     var _id = $("#getWorkerId_input").val();
     console.log(_id);
@@ -139,7 +145,7 @@ function fetchAndDisplay(){
         let startDate = res[2];
         let email = res[3];
         let account = res[4];
-        let departmentAddress = res[5];
+        let department = res[5];
         let salary = res[6];
         let location = res[7];
 
@@ -149,9 +155,10 @@ function fetchAndDisplay(){
         $("#startDate_output").val(startDate);
         $("#email_output").val(email);
         $("#account_output").val(account);
-        $("#departmentAddress_output").val(departmentAddress);
+        $("#departmentAddress_output").val(department);
         $("#salary_output").val(salary);
         
     }); 
-
+    
 }
+*/

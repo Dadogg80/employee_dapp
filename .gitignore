@@ -3,3 +3,4 @@ build
 
 #Private files
 .secret
+app-env
