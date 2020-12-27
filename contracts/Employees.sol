@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.4.16 <0.8.0;
+pragma solidity ^0.7.0;
 
 contract Employees {
 
     address public owner;
 
-    constructor () public {
+
+    constructor () {
         owner = msg.sender;
     }
 
@@ -15,65 +16,94 @@ contract Employees {
     }
 
     struct Employee {
-        uint employeeId;
+        uint256 id;
         string name;
-        string gender;
-        uint dateOfBirth;
+        string location;
+        string startDate;
         string email;
         address account;
+        address department;
+        uint256 salary;
     }
+   
+    
 
-    mapping (address => Employee) public employees;
-    uint[] id;
 
-    event employeeCreated (uint employeeId, string name, address account);
-    event employeeDeleted (uint employeeId, string name, address account);
-    event employeeUpdated (uint employeeId, string name, string gender, uint dateOfBirth, string email, address account);
+    uint256 public employeeId;
 
-    function createEmployee (string memory _name, string memory _gender, uint _dateOfBirth, string memory _email, address _account) internal onlyAdmin {
-       
-        if(employees[_account].dateOfBirth == 0) {
-            employees[_account].employeeId = id.length;
-            employees[_account].name = _name;
-            employees[_account].gender = _gender;
-            employees[_account].dateOfBirth = _dateOfBirth;
-            employees[_account].email = _email;
-            employees[_account].account = _account;
+    //  Employee array, called employees
+    Employee[] public employees;
+
+    //Events
+    event employeeCreated (uint id, string name, string location, string startDate, string email, address account, address department, uint salary);
+    event employeeDeleted (uint id, string name, address account);
+
+    function createEmployee (string memory _name, string memory _location, string memory _startDate,string memory _email, address _account, address _department, uint _salary) public {   
+        require (_department != _account, "Department and Worker address can't be the same. Pick another address.");
+        require (msg.sender != _account, "An employee can't register themself.");    
+        uint _id = employeeId++;
+        
+
+        Employee memory employee = Employee({
+            id: _id,
+            name: _name,
+            location: _location,
+            startDate: _startDate,
+            email: _email,
+            account: _account,
+            department: _department,
+            salary: _salary
+        });
+
+            employees.push(employee);
+           // uint newEmployeeId = employees.length;
             
-            
-            id.push(employees[_account].employeeId);
-            emit employeeCreated (employees[_account].employeeId, _name, _account);
-        } else {
-            employees[_account].employeeId = id.length;
-            employees[_account].name = _name;
-            employees[_account].gender = _gender;
-            employees[_account].dateOfBirth = _dateOfBirth;
-            employees[_account].email = _email;
-            employees[_account].account = _account;
-
-            
-            emit employeeUpdated (
-                employees[_account].employeeId, 
-                employees[_account].name, 
-                employees[_account].gender, 
-                employees[_account].dateOfBirth, 
-                employees[_account].email, 
-                employees[_account].account
+            emit employeeCreated (
+                employee.id, 
+                employee.name, 
+                employee.location,
+                employee.startDate, 
+                employee.email, 
+                employee.account,
+                employee.department,
+                employee.salary
             );
-        }
     }
 
-    function getEmployee(address _account) public view returns (uint, string memory, uint, string memory, address)
-    {
-        return (employees[_account].employeeId, employees[_account].name, employees[_account].dateOfBirth, employees[_account].email , employees[_account].account);
+    function getEmployee(uint _index) public view returns (uint256 id, string memory name, string memory startDate, string memory email, address account, address department, uint256 salary, string memory location) {
+        Employee storage employee = employees[_index];
+
+            id = employee.id;
+            name = employee.name;
+            startDate = employee.startDate;
+            email = employee.email;
+            account = employee.account;
+            department = employee.department;
+            salary = employee.salary;
+            location = employee.location;
     }
 
-    function deleteEmployee (address _account) public onlyAdmin {
-        string memory name = employees[_account].name;
-        uint employeeId = employees[_account].employeeId;
-        delete (employees[_account]);
-        assert (employees[_account].dateOfBirth == 0);
+    function deleteEmployee (uint _id) internal onlyAdmin {
+        string memory name = employees[_id].name;
+        uint id = _id;
+        address account = employees[_id].account;
+        delete (employees[_id]);
+        assert (employees[_id].salary == 0);
 
-        emit employeeDeleted(employeeId, name, _account);
+        emit employeeDeleted(id, name, account);
     }
+
+    function get(uint _id) public view returns (uint256 id, string memory name, uint256 salary, string memory location) {
+        
+            Employee memory employee = employees[_id];
+            
+            id = employee.id; 
+            name= employee.name; 
+            salary = employee.salary; 
+            location = employee.location;
+        
+    }
+
 }
+
+

@@ -1,2 +1,7 @@
-node_modules
+
 build
+
+#Private files
+.secret
+app-env
+node_modules
