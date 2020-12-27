@@ -1,7 +1,7 @@
 
 build
-
+node_modules
 #Private files
 .secret
 app-env
-node_modules
+
