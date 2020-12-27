@@ -4,3 +4,5 @@ build
 #Private files
 .secret
 app-env
+node_modules 
+npm-debug.log 
